@@ -1,0 +1,53 @@
+.TaskList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  
+  max-width: 80%;
+  margin: auto
+
+}
+
+.TaskCard {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  width: 300px;
+  text-align: left;
+}
+
+.TaskCard button {
+  float: right;
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.TaskCard.pending {
+  background-color: #fff;
+}
+
+.TaskCard.expired {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+
+.status-indigator {
+    display: inline-block;
+    background: green;
+    height: 0.6rem;
+    width: 0.6rem;
+    border-radius: 50%
+}
+
+.status-indigator.expired {
+    background: red
+}
+
+.task-status {
+    text-transform: capitalize
+}
+

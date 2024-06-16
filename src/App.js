@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+
+
+
+
+import React, { useState } from 'react';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import './App.css';
+import Header from './components/Header/Header';
+import TaskInput from './components/TaskInput/TaskInput';
+import TaskList from './components/TaskList/TaskList';
+import Search from './components/Search/Search';
 
 function App() {
+  const [showTaskInput, setShowTaskInput] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Header onAddNewTask={() => setShowTaskInput(!showTaskInput)} />
+        {showTaskInput && <TaskInput onClose={() => setShowTaskInput(false)} />}
+         <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        <TaskList searchQuery={searchQuery} />
+      </div>
+    </Provider>
   );
 }
 
 export default App;
+
